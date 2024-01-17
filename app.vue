@@ -14,3 +14,7 @@ onMounted(() => {
     </NuxtLayout>
   </div>
 </template>
+
+<style>
+@import url("https://fonts.googleapis.com/css?family=Didact Gothic");
+</style>

@@ -16,25 +16,30 @@
                 <div>
                   <button type="button" class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" aria-expanded="false" data-dropdown-toggle="dropdown-user">
                     <span class="sr-only">Open user menu</span>
-                    <img class="w-8 h-8 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="user photo">
+                    <img class="w-8 h-8 rounded-full" :src="currentPlayer.avatar" alt="user photo">
                   </button>
                 </div>
-                <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600" id="dropdown-user">
+                <div class="z-50 w-[11rem] hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600" id="dropdown-user">
                   <div class="px-4 py-3" role="none">
                     <p class="text-sm text-gray-700 dark:text-white" role="none">
-                      Neil Sims
+                      {{currentPlayer.name}}
+                      <span class="bg-green-100 text-green-600 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md dark:bg-green-100">Striker</span>
                     </p>
                     <p class="text-sm font-medium text-gray-700 truncate dark:text-gray-300" role="none">
-                      neil.sims@flowbite.com
+                      {{currentPlayer.email}}
                     </p>
                   </div>
                   <ul class="py-1" role="none">
                     <li>
-                      <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:font-bold dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">
+                      <a @click="openAccountSettings" class="cursor-pointer block px-4 py-2 text-sm text-gray-700 hover:font-bold dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">
                         <font-awesome-icon icon="fa-gear" class="w-5 h-5"/>Account Settings</a>
                     </li>
                     <li>
-                      <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:font-bold dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">
+                      <a class="cursor-pointer block px-4 py-2 text-sm text-gray-700 hover:font-bold dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">
+                        <font-awesome-icon icon="fa-lock" class="w-5 h-5"/>Change Password</a>
+                    </li>
+                    <li>
+                      <a @click="logout" class="cursor-pointer block px-4 py-2 text-sm text-gray-700 hover:font-bold dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">
                         <font-awesome-icon icon="fa-circle-left" class="w-5 h-5"/>Sign out</a>
                     </li>
                   </ul>
@@ -45,4 +50,34 @@
       </div>
     </nav>
   </div>
+  <AccountSettings :show="isAccountSettingsOpen" @closeModal="openAccountSettings" :currentPlayer="currentPlayer"></AccountSettings>
 </template>
+
+<script setup>
+import AccountSettings from '~/components/modal/AccountSettings.vue'
+const playersStore = usePlayersStore();
+const { fetchCurrentPlayer } = playersStore;
+const { currentPlayer } = storeToRefs(playersStore);
+const supabase = useSupabaseClient()
+const user = useSupabaseUser()
+const isAccountSettingsOpen = ref(false)
+
+onMounted(async () => {
+  fetchCurrentPlayer(user.value.email);
+})
+
+const openAccountSettings = () => {
+  isAccountSettingsOpen.value = !isAccountSettingsOpen.value
+}
+
+async function logout() {
+  const {error} = await supabase.auth.signOut();
+  if(error) {
+    alert(error)
+    return
+  }
+  else {
+    navigateTo('/login')
+  }
+}
+</script>

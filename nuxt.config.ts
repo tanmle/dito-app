@@ -1,9 +1,25 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import process from "process"; 
 export default defineNuxtConfig({
   modules: [
-      '@nuxtjs/tailwindcss',
-      '@vueform/nuxt'
+    '@vueuse/nuxt',
+    "@nuxtjs/tailwindcss",
+    "@vueform/nuxt",
+    "@nuxtjs/supabase",
+    ["@pinia/nuxt", { autoImports: ["defineStore", "acceptHMRUpdate"] }],
   ],
+  imports: {
+    dir: ["stores"],
+  },
+  supabase: {
+    url: process.env.SUPABASE_URL,
+    key: process.env.SUPABASE_KEY,
+    redirect: true,
+    redirectOptions: {
+      login: '/login',
+      exclude: ['/', '/login'],
+    }
+  },
   devtools: { enabled: true },
   postcss: {
     plugins: {
@@ -17,9 +33,9 @@ export default defineNuxtConfig({
   ],
   build: {
     transpile: [
-      '@fortawesome/vue-fontawesome',
-      '@fortawesome/fontawesome-svg-core',
-      '@fortawesome/free-brands-svg-icons'
-    ]
-  }
+      "@fortawesome/vue-fontawesome",
+      "@fortawesome/fontawesome-svg-core",
+      "@fortawesome/free-brands-svg-icons",
+    ],
+  },
 });

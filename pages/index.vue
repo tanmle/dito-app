@@ -1,7 +1,7 @@
 <template>
-  <match/>
+  <login/>
 </template>
 
 <script setup>
-  import match from './match.vue';
+  import login from './login.vue';
 </script>

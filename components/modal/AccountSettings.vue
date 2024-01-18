@@ -26,8 +26,8 @@
                             <div class="flex py-0 px-6 flex-col self-start gap-2 items-center" id="content">
                                 <div id="mainContent" class="flex flex-col self-start gap-4 w-full mt-2">
                                     <div class="flex flex-col justify-center gap-2 w-full items-center">
-                                        <img class="rounded-full w-20 h-20 border cursor-pointer" :src="currentPlayer.avatar" @click="avatarUpload.open"
-                                            alt="User avatar" />
+                                        <img class="rounded-full w-20 h-20 border cursor-pointer"
+                                            :src="props.currentPlayer.avatar" @click="avatarUpload.open" alt="User avatar" />
                                         <div class="flex gap-2 flex-col items-center">
                                             <div class="flex items-center gap-[10px]">
                                                 <span class="text-gray-800 text-2xl font-bold">{{ currentPlayer.name
@@ -69,20 +69,23 @@
                                                 <label class="text-sm font-medium">Default</label>
                                                 <div class="flex flew-row">
                                                     <div class="flex items-center me-4">
-                                                        <input id="mon-checkbox" type="checkbox" value="" :checked="currentPlayer.is_mon_default"
+                                                        <input id="mon-checkbox" type="checkbox" value=""
+                                                            :checked="currentPlayer.is_mon_default"
                                                             class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                                         <label for="inline-checkbox"
                                                             class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Mon</label>
                                                     </div>
                                                     <div class="flex items-center me-4">
-                                                        <input id="tue-checkbox" type="checkbox" value="" :checked="currentPlayer.is_tue_default"
+                                                        <input id="tue-checkbox" type="checkbox" value=""
+                                                            :checked="currentPlayer.is_tue_default"
                                                             class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                                         <label for="mon-checkbox"
                                                             class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Tue</label>
                                                     </div>
                                                     <div class="flex items-center me-4">
                                                         <div class="flex items-center me-4">
-                                                            <input id="wed-checkbox" type="checkbox" value="" :checked="currentPlayer.is_wed_default"
+                                                            <input id="wed-checkbox" type="checkbox" value=""
+                                                                :checked="currentPlayer.is_wed_default"
                                                                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                                             <label for="wed-checkbox"
                                                                 class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Wed</label>
@@ -90,7 +93,8 @@
                                                     </div>
                                                     <div class="flex items-center me-4">
                                                         <div class="flex items-center me-4">
-                                                            <input id="thu-checkbox" type="checkbox" value="" :checked="currentPlayer.is_thu_default"
+                                                            <input id="thu-checkbox" type="checkbox" value=""
+                                                                :checked="currentPlayer.is_thu_default"
                                                                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                                             <label for="thu-checkbox"
                                                                 class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Thu</label>
@@ -98,7 +102,8 @@
                                                     </div>
                                                     <div class="flex items-center me-4">
                                                         <div class="flex items-center me-4">
-                                                            <input id="fri-checkbox" type="checkbox" value="" :checked="currentPlayer.is_fri_default"
+                                                            <input id="fri-checkbox" type="checkbox" value=""
+                                                                :checked="currentPlayer.is_fri_default"
                                                                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                                             <label for="fri-checkbox"
                                                                 class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Fri</label>
@@ -106,7 +111,8 @@
                                                     </div>
                                                     <div class="flex items-center me-4">
                                                         <div class="flex items-center me-4">
-                                                            <input id="sat-checkbox" type="checkbox" value="" :checked="currentPlayer.is_sat_default"
+                                                            <input id="sat-checkbox" type="checkbox" value=""
+                                                                :checked="currentPlayer.is_sat_default"
                                                                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                                             <label for="sat-checkbox"
                                                                 class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Sat</label>
@@ -114,7 +120,8 @@
                                                     </div>
                                                     <div class="flex items-center me-4">
                                                         <div class="flex items-center me-4">
-                                                            <input id="sun-checkbox" type="checkbox" value="" :checked="currentPlayer.is_sun_default"
+                                                            <input id="sun-checkbox" type="checkbox" value=""
+                                                                :checked="currentPlayer.is_sun_default"
                                                                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                                             <label for="sun-checkbox"
                                                                 class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Sun</label>
@@ -136,6 +143,7 @@
                                         Save
                                     </button>
                                 </div>
+                                <BallLoader v-if="isLoading"></BallLoader>
                             </div>
                         </DialogPanel>
                     </TransitionChild>
@@ -153,9 +161,15 @@ import {
     TransitionRoot,
 } from "@headlessui/vue";
 import { useFileDialog } from "@vueuse/core";
+const avatarsStore = useAvatarsStore();
+const playersStore = usePlayersStore();
+const { uploadAvatar, deleteAvatar, fetchPlayerAvatar } = avatarsStore;
+const { updatePlayerAvatar } = playersStore;
+const { currentAvatar } = storeToRefs(avatarsStore);
 const avatarUpload = useFileDialog({
     accept: 'image/jpeg,image/png,image/gif'
 })
+const isLoading = ref(false)
 const emit = defineEmits(["closeModal"]);
 const props = defineProps({
     currentPlayer: {
@@ -163,13 +177,19 @@ const props = defineProps({
         required: true
     }
 })
+
 function closeModal() {
     emit('closeModal')
 }
 
-avatarUpload.onChange((files) => { 
-    props.currentPlayer.avatar = files[0]
-    console.log('files[0]', files[0])
+avatarUpload.onChange(async (files) => {
+    isLoading.value = true;
+    await deleteAvatar(props.currentPlayer.id);
+    await uploadAvatar(props.currentPlayer.id, files[0])
+    await fetchPlayerAvatar(`${props.currentPlayer.id}.${files[0].name.split('.').pop()}`)
+    await updatePlayerAvatar(props.currentPlayer.id, currentAvatar.value)
+    props.currentPlayer.avatar = URL.createObjectURL(files[0])
+    isLoading.value = false;
 })
 </script>
   

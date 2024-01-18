@@ -21,7 +21,6 @@ export const usePlayersStore = defineStore({
       }
     },
     async fetchCurrentPlayer(email: string) {
-      console.log('email', email)
       const { data, error } = await useSupabaseClient()
         .from("players")
         .select()
@@ -31,7 +30,6 @@ export const usePlayersStore = defineStore({
       }
       else 
       {
-        console.log('data', data)
         this.currentPlayer = data[0];
       }
     },
@@ -44,11 +42,17 @@ export const usePlayersStore = defineStore({
     },
     async updateRegisteredPlayers(playerIds) {
       if(playerIds) {
-        console.log('id', playerIds)
         this.playersList.forEach(player => {
           player.is_registered = playerIds.map(Number).includes(player.id);
         });
       }
+    },
+    async updatePlayerAvatar(playerId, avatarFileName) {
+      const { data, error } = await useSupabaseClient()
+        .from("players")
+        .update({ avatar: avatarFileName })
+        .eq("id", playerId)
+        .select();
     }
   },
   getters: {},

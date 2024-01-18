@@ -40,51 +40,51 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
 
-  svg {
-    height: 300px;
-    display: block;
-    margin: 0 auto;
+.loader svg {
+  height: 300px;
+  display: block;
+  margin: 0 auto;
+}
 
-    path {
-      animation-duration: 1s;
-      animation-name: pulse;
-      animation-iteration-count: infinite;
-      color: rgb(26 86 219 / 1);
+.loader svg path {
+  animation-duration: 1s;
+  animation-name: pulse;
+  animation-iteration-count: infinite;
+  color: rgb(26 86 219 / 1);
+}
 
-      &.path-7 {
-        animation-delay: -1s
-      }
+.loader svg path &.path-7 {
+  animation-delay: -1s
+}
 
-      &.path-6 {
-        animation-delay: -.875s
-      }
+.loader svg path &.path-6 {
+  animation-delay: -.875s
+}
 
-      &.path-5 {
-        animation-delay: -.75s
-      }
+.loader svg path &.path-5 {
+  animation-delay: -.75s
+}
 
-      &.path-4 {
-        animation-delay: -.625s
-      }
+.loader svg path &.path-4 {
+  animation-delay: -.625s
+}
 
-      &.path-3 {
-        animation-delay: -.5s
-      }
+.loader svg path &.path-3 {
+  animation-delay: -.5s
+}
 
-      &.path-2 {
-        animation-delay: -.375s
-      }
+.loader svg path &.path-2 {
+  animation-delay: -.375s
+}
 
-      &.path-1 {
-        animation-delay: -.25s
-      }
+.loader svg path &.path-1 {
+  animation-delay: -.25s
+}
 
-      &.path-0 {
-        animation-delay: -.125s
-      }
-    }
-  }
+.loader svg path &.path-0 {
+  animation-delay: -.125s
 }
 
 
@@ -100,4 +100,5 @@
   100% {
     opacity: .1;
   }
-}</style>
+}
+</style>

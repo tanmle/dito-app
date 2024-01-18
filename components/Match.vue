@@ -24,7 +24,7 @@
           class="w-12 h-12 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
           <font-awesome-icon icon="fa-lock" class="w-6 h-6" />
         </button>
-        <button v-if="!isLocked" type="button" @click="toggleMatch(true)"
+        <button v-if="!isLocked && isMatchOpened" type="button" @click="toggleMatch(true)"
           class="w-12 h-12 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
           <font-awesome-icon icon="fa-lock-open" class="w-6 h-6" />
         </button>
@@ -65,7 +65,7 @@
       </div>
       <div class="player-list gap-1">
         <div v-for="player of playersList"
-          class="player flex flex-row text-white md:w-72 w-full h-9 border rounded-md items-center"
+          class="player flex flex-row text-white max-md:w-64 md:w-80 w-full h-9 border rounded-md items-center"
           :class="player.is_registered ? 'bg-[#1cc88a]' : 'bg-gray-500'">
           <img :src="player.avatar" class="w-7 h-7 border rounded-full ml-1" />
           <span class="pl-2 pr-2">{{ player.name }}
@@ -109,7 +109,7 @@
       <div v-for="n in totalFreelanceRow" class="flex flex-row gap-2 mb-1 w-80" :class="isLocked ? 'justify-center' : ''">
         <input v-model="freelancerList[n - 1]" type="text" :disabled="isLocked"
           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-52 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-        <button v-if="totalFreelanceRow > 0 & !isLocked" type="button" @click="removeFreelanceRow(n)"
+        <button v-if="totalFreelanceRow > 0 && !isLocked" type="button" @click="removeFreelanceRow(n)"
           class="enabled:bg-blue-700 w-10 h-10 text-white bg-gray-400 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
           <font-awesome-icon icon="fa-minus" class="w-4 h-4" />
         </button>
@@ -121,7 +121,7 @@
       <div class="mb-12"></div>
     </div>
     <div v-if="!isMatchOpened && !isLoading"
-      class="flex flex-col justify-center items-center text-5xl text-gray-500 mt-36 text-center">
+      class="flex flex-col justify-center items-center text-5xl text-gray-500 mt-16 text-center">
       <p>Match hasn't been created yet!</p>
       <p>Please contact admin</p>
     </div>
@@ -137,6 +137,7 @@ const isLoading = ref(true)
 
 const toggleMatch = (value) => {
   isLocked.value = value
+  toggleMatchState(value, moment(date.value).format('DD/MM/YYYY'))
   emit('locked', value)
 }
 
@@ -244,7 +245,6 @@ onMounted(async () => {
 })
 
 const openDatePicker = () => {
-  console.log('sdfsdf', datepicker.value)
   datepicker.value.openMenu()
 }
 
@@ -256,7 +256,7 @@ import type { DatePickerInstance } from "@vuepic/vue-datepicker"
 
 const playersStore = usePlayersStore();
 const matchesStore = useMatchesStore();
-const { fetchMatches, isMatchExist, addPlayersToMatch, createMatch, fetchRegisteredPlayers, fetchFreelancers, addFreelancersToMatch, deleteMatch } = matchesStore;
+const { fetchMatches, isMatchExist, addPlayersToMatch, createMatch, fetchRegisteredPlayers, fetchFreelancers, addFreelancersToMatch, deleteMatch, toggleMatchState } = matchesStore;
 const { fetchPlayers, updateDefaultPlayers, updateRegisteredPlayers } = playersStore;
 const { playersList, currentPlayer } = storeToRefs(playersStore);
 const { registeredPlayersList, matchFreelancersList } = storeToRefs(matchesStore);

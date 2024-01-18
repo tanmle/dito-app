@@ -71,6 +71,13 @@ export const useMatchesStore = defineStore({
         .eq("id", matchId)
         .select();
     },
+    async toggleMatchState(state, matchDate) {
+      const { data, error } = await useSupabaseClient()
+        .from("matches")
+        .update({ is_locked: state })
+        .eq("date", matchDate)
+        .select();
+    },
     async deleteMatch(matchDate) {
       const { data, error } = await useSupabaseClient()
         .from("matches")

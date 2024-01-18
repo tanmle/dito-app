@@ -56,14 +56,17 @@
 <script setup>
 import AccountSettings from '~/components/modal/AccountSettings.vue'
 const playersStore = usePlayersStore();
+const avatarsStore = useAvatarsStore();
 const { fetchCurrentPlayer } = playersStore;
+const { fetchPlayerAvatar } = avatarsStore;
 const { currentPlayer } = storeToRefs(playersStore);
+const { currentAvatar } = storeToRefs(avatarsStore);
 const supabase = useSupabaseClient()
 const user = useSupabaseUser()
 const isAccountSettingsOpen = ref(false)
 
 onMounted(async () => {
-  fetchCurrentPlayer(user.value.email);
+  await fetchCurrentPlayer(user.value.email);
 })
 
 const openAccountSettings = () => {

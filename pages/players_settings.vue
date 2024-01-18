@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>this is players settings</p>
+    <PlayerTable></PlayerTable>
   </div>
 </template>
 

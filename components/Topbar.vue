@@ -19,7 +19,7 @@
                     <img class="w-8 h-8 rounded-full" :src="currentPlayer.avatar" alt="user photo">
                   </button>
                 </div>
-                <div class="z-50 w-[11rem] hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600" id="dropdown-user">
+                <div class="z-50 w-[11rem] hidden my-4 text-base list-none bg-gray-100 divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600" id="dropdown-user">
                   <div class="px-4 py-3" role="none">
                     <p class="text-sm text-gray-700 dark:text-white" role="none">
                       {{currentPlayer.name}}

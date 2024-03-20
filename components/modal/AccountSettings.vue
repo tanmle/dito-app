@@ -66,30 +66,14 @@
                                     <div id="apiContent" class="flex flex-col gap-4">
                                         <div class="flex gap-4">
                                             <div class="flex flex-col gap-2 w-full">
-                                                <label class="text-sm font-medium">Default</label>
-                                                <div class="flex flew-row">
-                                                    <div class="flex items-center me-4">
-                                                        <input id="mon-checkbox" type="checkbox" value=""
-                                                            :checked="currentPlayer.is_mon_default"
-                                                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                                        <label for="inline-checkbox"
-                                                            class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Mon</label>
-                                                    </div>
+                                                <label class="text-sm font-bold text-center">Default</label>
+                                                <div class="flex flew-row justify-center ml-6">
                                                     <div class="flex items-center me-4">
                                                         <input id="tue-checkbox" type="checkbox" value=""
                                                             :checked="currentPlayer.is_tue_default"
                                                             class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                                         <label for="mon-checkbox"
                                                             class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Tue</label>
-                                                    </div>
-                                                    <div class="flex items-center me-4">
-                                                        <div class="flex items-center me-4">
-                                                            <input id="wed-checkbox" type="checkbox" value=""
-                                                                :checked="currentPlayer.is_wed_default"
-                                                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                                            <label for="wed-checkbox"
-                                                                class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Wed</label>
-                                                        </div>
                                                     </div>
                                                     <div class="flex items-center me-4">
                                                         <div class="flex items-center me-4">
@@ -102,20 +86,38 @@
                                                     </div>
                                                     <div class="flex items-center me-4">
                                                         <div class="flex items-center me-4">
-                                                            <input id="fri-checkbox" type="checkbox" value=""
-                                                                :checked="currentPlayer.is_fri_default"
-                                                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                                            <label for="fri-checkbox"
-                                                                class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Fri</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="flex items-center me-4">
-                                                        <div class="flex items-center me-4">
                                                             <input id="sat-checkbox" type="checkbox" value=""
                                                                 :checked="currentPlayer.is_sat_default"
                                                                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                                             <label for="sat-checkbox"
                                                                 class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Sat</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="flex flew-row justify-center ml-6">
+                                                    <div class="flex items-center me-4">
+                                                        <input id="mon-checkbox" type="checkbox" value=""
+                                                            :checked="currentPlayer.is_mon_default"
+                                                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                        <label for="inline-checkbox"
+                                                            class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Mon</label>
+                                                    </div>
+                                                    <div class="flex items-center me-4">
+                                                        <div class="flex items-center me-4">
+                                                            <input id="wed-checkbox" type="checkbox" value=""
+                                                                :checked="currentPlayer.is_wed_default"
+                                                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                            <label for="wed-checkbox"
+                                                                class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Wed</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex items-center me-4">
+                                                        <div class="flex items-center me-4">
+                                                            <input id="fri-checkbox" type="checkbox" value=""
+                                                                :checked="currentPlayer.is_fri_default"
+                                                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                            <label for="fri-checkbox"
+                                                                class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Fri</label>
                                                         </div>
                                                     </div>
                                                     <div class="flex items-center me-4">

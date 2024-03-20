@@ -146,6 +146,15 @@ const toggleCurrentPlayer = async (isChecked) => {
   playersList.value.find(pl => pl.email == currentPlayer.value.email).is_registered = isChecked;
   currentPlayer.value.is_registered = isChecked
   await addPlayersToMatch(playersList.value.filter(player => player.is_registered === true), moment(date.value).format('DD/MM/YYYY'));
+  playersList.value.sort((a, b) => {
+    if (a.is_registered && !b.is_registered) {
+      return -1;
+    } else if (!a.is_registered && b.is_registered) {
+      return 1;
+    } else {
+      return a.name.localeCompare(b.name);
+    }
+  });
   isLoading.value = false
 }
 
@@ -189,6 +198,15 @@ const updateMatchPlayers = async (player) => {
   if (player.email == currentPlayer.value.email) {
     currentPlayer.value.is_registered = player.is_registered
   }
+  playersList.value.sort((a, b) => {
+    if (a.is_registered && !b.is_registered) {
+      return -1;
+    } else if (!a.is_registered && b.is_registered) {
+      return 1;
+    } else {
+      return a.name.localeCompare(b.name);
+    }
+  });
   isLoading.value = false
 }
 
@@ -242,6 +260,16 @@ onMounted(async () => {
   }
   isLoading.value = false
   currentPlayer.value.is_registered = playersList.value.find(pl => pl.email == currentPlayer.value.email).is_registered
+
+  playersList.value.sort((a, b) => {
+    if (a.is_registered && !b.is_registered) {
+      return -1;
+    } else if (!a.is_registered && b.is_registered) {
+      return 1;
+    } else {
+      return a.name.localeCompare(b.name);
+    }
+  });
 })
 
 const openDatePicker = () => {

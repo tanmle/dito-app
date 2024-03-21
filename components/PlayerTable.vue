@@ -20,31 +20,31 @@
         </div>
       </div>
     </div>
-    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 mb-14">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 mb-14 table-auto">
       <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
         <tr>
-          <th scope="col" class="px-6 py-3">
+          <th scope="col" class="px-6 py-3 max-xl:hidden">
             No
           </th>
           <th scope="col" class="px-6 py-3">
             Name
           </th>
-          <th scope="col" class="px-6 py-3">
+          <th scope="col" class="px-6 py-3 max-xl:hidden">
             Level
           </th>
-          <th scope="col" class="px-6 py-3">
+          <th scope="col" class="px-6 py-3 max-xl:hidden">
             Position
           </th>
-          <th scope="col" class="px-6 py-3">
+          <th scope="col" class="px-6 py-3 max-xl:hidden">
             Default
           </th>
-          <th scope="col" class="px-6 py-3">
+          <th scope="col" class="px-6 py-3 max-xl:hidden">
             Role
           </th>
-          <th scope="col" class="px-6 py-3">
+          <th scope="col" class="px-6 py-3 max-xl:hidden">
             Match pay
           </th>
-          <th scope="col" class="px-6 py-3">
+          <th scope="col" class="px-6 py-3 max-xl:hidden">
             Status
           </th>
           <th scope="col" class="px-6 py-3">
@@ -54,8 +54,8 @@
       </thead>
       <tbody v-show="!isLoading">
         <tr v-for="(player, index) in listCurrentPlayers"
-          class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-          <td class="px-6 py-4">
+          class="border-b dark:bg-gray-800 dark:border-gray-70 dark:hover:bg-gray-600"  :class="player.status === 3 ? 'bg-gray-600' : 'bg-white hover:bg-gray-200'">
+          <td class="px-6 py-4 max-xl:hidden">
             {{ index + 1 }}
           </td>
           <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
@@ -65,16 +65,16 @@
               <div class="font-normal text-gray-500">{{ player.email }}</div>
             </div>
           </th>
-          <td class="px-6 py-4">
+          <td class="px-6 py-4 max-xl:hidden">
             {{ player.level }}
           </td>
-          <td class="px-6 py-4">
+          <td class="px-6 py-4 max-xl:hidden">
             <span v-if="player.position === 'Striker'"
               class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Striker</span>
             <span v-if="player.position === 'Defender'"
               class="bg-indigo-100 text-indigo-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-indigo-900 dark:text-indigo-300">Defender</span>
           </td>
-          <td class="px-6 py-4">
+          <td class="px-6 py-4 max-xl:hidden">
             <div class="flex flex-col">
               <div>
                 <span v-if="player.is_mon_default"
@@ -97,10 +97,10 @@
             </div>
 
           </td>
-          <td class="px-6 py-4 " :class="player.role == 1 ? 'text-yellow-300' : 'text-blue-300'">
+          <td class="px-6 py-4 max-xl:hidden" :class="player.role === 1 ? 'text-yellow-300' : 'text-blue-300'">
             {{ player.role == 1 ? "Admin" : "User" }}
           </td>
-          <td class="px-6 py-4">
+          <td class="px-6 py-4 max-xl:hidden">
             <span v-if="player.is_match_pay"
               class="inline-flex items-center justify-center w-6 h-6 me-2 text-sm font-semibold text-gray-800 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300">
               <svg class="w-2.5 h-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -111,7 +111,7 @@
               <span class="sr-only">Is match pay?</span>
             </span>
           </td>
-          <td class="px-6 py-4">
+          <td class="px-6 py-4 max-xl:hidden">
             <span v-if="player.status == 1"
               class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">Active</span>
             <span v-if="player.status == 2"
@@ -120,13 +120,20 @@
               class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">Banned</span>
           </td>
           <td class="px-6 py-4 text-blue-700">
-            <a href="#" class="mr-2">Edit</a>
-            <a href="#">Reset password</a>
+            <button type="button"
+              class="w-8 h-8 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 mr-1">
+              <font-awesome-icon icon="fa-pencil" class="w-4 h-4" />
+            </button>
+            <button type="button"
+              class="w-8 h-8 text-white bg-gray-600 hover:bg-gray-500 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+              <font-awesome-icon icon="fa-rotate" class="w-4 h-4" />
+            </button>
           </td>
         </tr>
       </tbody>
     </table>
-</div></template>
+  </div>
+</template>
 
 <script lang="ts" setup>
 import Fuse from 'fuse.js'
@@ -139,10 +146,13 @@ const listCurrentPlayers = ref([])
 
 onMounted(async () => {
   await fetchPlayers();
-  playersList.value.sort((a, b) => {
-    return a.name.localeCompare(b.name);
-  });
-  listCurrentPlayers.value = {...playersList.value}
+  playersList.value.sort((a, b) =>
+    a.name < b.name ? -1 : 1
+  );
+  playersList.value.sort((a, b) =>
+    a.status - b.status
+  );
+  listCurrentPlayers.value = { ...playersList.value }
   isLoading.value = false;
 })
 

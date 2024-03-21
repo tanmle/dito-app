@@ -169,6 +169,15 @@ const setDate = async (value) => {
     freelancerList.value = matchFreelancersList.value;
     totalFreelanceRow.value = freelancerList.value.length
   }
+  playersList.value.sort((a, b) => {
+    if (a.is_registered && !b.is_registered) {
+      return -1;
+    } else if (!a.is_registered && b.is_registered) {
+      return 1;
+    } else {
+      return a.name.localeCompare(b.name);
+    }
+  });
   isLoading.value = false
 }
 
@@ -215,6 +224,15 @@ const addMatch = async () => {
   await createMatch(moment(date.value).format('DD/MM/YYYY'))
   await addPlayersToMatch(playersList.value.filter(player => player.is_registered === true), moment(date.value).format('DD/MM/YYYY'));
   isMatchOpened.value = true
+  playersList.value.sort((a, b) => {
+    if (a.is_registered && !b.is_registered) {
+      return -1;
+    } else if (!a.is_registered && b.is_registered) {
+      return 1;
+    } else {
+      return a.name.localeCompare(b.name);
+    }
+  });
   isLoading.value = false
 }
 
@@ -252,7 +270,7 @@ onMounted(async () => {
   await fetchPlayers()
   await fetchRegisteredPlayers(moment(date.value).format('DD/MM/YYYY'))
   await fetchFreelancers(moment(date.value).format('DD/MM/YYYY'))
-  await updateDefaultPlayers(moment(date).format('ddd'))
+  await updateDefaultPlayers(moment(date.value).format('ddd'))
   await updateRegisteredPlayers(registeredPlayersList.value)
   if (matchFreelancersList.value?.length > 0) {
     freelancerList.value = matchFreelancersList.value;

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>this is match settings</p>
+    <MatchSettings></MatchSettings>
   </div>
 </template>
 
